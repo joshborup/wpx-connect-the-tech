@@ -14,7 +14,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     // write the getStudents function that get invoked when componentDidMount runs (hint: route "/api/students")
-    this.getStudents();
+    // this.getStudents();
   }
 
   // write a delete method that will take in an id and send it to /api/student/:student_id (hint: student id is the param)
