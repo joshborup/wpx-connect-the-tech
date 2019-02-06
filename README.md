@@ -8,4 +8,34 @@ To connect our applications together we will do the campus data starting from th
 
 ### step 1.)
 
+- write the get request in the `componentDidMount`to grab the campus data from `/api/campus_info`
+- set `setState` for `campusInfo` with the response returned
+- `import` the `Campus` component into the `CampusInfo` component
+- inbetween the render and return, map over the `campusInfo` array from state and return the `Campus` component on each loop with:
+  - index
+  - campus
+  - program
+  - campus_phone
+
+tip: remember to add the key to the parent component, use the campus_id
+
+<details>
+
+```js
+componentDidMount() {
+    axios.get("/api/campus_info").then(response => {
+      this.setState({
+        campusInfo: response.data
+      });
+    });
+  }
+
+const mappedCampusInfo = campusInfo.map((campus, index) => {
+    return <Campus index={index} key={campus.campus_id} {...campus} />;
+});
+```
+
+<summary>
+Solution
+
 ## student info
