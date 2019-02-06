@@ -72,8 +72,8 @@ export default class Form extends Component {
               select one
             </option>
             <option value="1">Phoenix</option>
-            <option value="2">Dallas</option>
-            <option value="3">Provo</option>
+            <option value="2">Provo</option>
+            <option value="3">Dallas</option>
           </select>
         </div>
 
