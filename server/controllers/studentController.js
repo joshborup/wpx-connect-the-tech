@@ -1,11 +1,7 @@
 module.exports = {
   getStudents: (req, res) => {
-    const db = req.app.get("db");
-    db.get_students()
-      .then(response => {
-        res.status(200).json(response);
-      })
-      .catch(err => console.log(err));
+    //    logic to access db, run the query in get_students.sql
+    //    send info back to the person who requested it
   },
   postStudent: (req, res) => {
     const db = req.app.get("db");
@@ -32,13 +28,7 @@ module.exports = {
       .catch(err => console.log(err.detail));
   },
   deleteStudent: (req, res) => {
-    const db = req.app.get("db");
-    const { student_id } = req.params;
-    console.log("first", student_id);
-    db.delete_student(student_id)
-      .then(response => {
-        res.status(200).json(response);
-      })
-      .catch(err => console.log("first", err));
+    //    logic to access db, run the query in delete_student.sql (hint: make sure to pass in the param student_id, check the delete route url)
+    //    send some sort of response to confirm deletion, should generally be updated list
   }
 };

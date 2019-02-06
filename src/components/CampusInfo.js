@@ -11,19 +11,13 @@ export default class CampusInfo extends Component {
     };
   }
   componentDidMount() {
-    axios.get("/api/campus_info").then(response => {
-      this.setState({
-        campusInfo: response.data
-      });
-    });
+    // axios call to get "/api/campus_info" and set state with response
   }
 
   render() {
     const { campusInfo } = this.state;
-    console.log(campusInfo);
-    const mappedCampusInfo = campusInfo.map((campus, index) => {
-      return <Campus index={index} key={campus.campus_id} {...campus} />;
-    });
+
+    // map over campusInfo and pass campus info as props
     return (
       <div className="campus-info-container">
         <div>Campus Info</div>
@@ -35,7 +29,7 @@ export default class CampusInfo extends Component {
             third="phone"
             fourth=""
           />
-          {mappedCampusInfo}
+          {/* diplay mapped campus list */}
         </div>
       </div>
     );

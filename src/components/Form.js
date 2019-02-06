@@ -10,34 +10,12 @@ export default class Form extends Component {
       message: ""
     };
   }
+
   postStudent = event => {
-    event.preventDefault();
-    const { name, cohort, campus } = this.state;
-    const newStudent = {
-      name,
-      cohort,
-      campus
-    };
-    axios
-      .post("/api/student", newStudent)
-      .then(response => {
-        this.setState({
-          name: "",
-          cohort: "",
-          campus: "",
-          message: response.data.message
-        });
-        this.props.getStudents();
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({
-          message: "there was an error posting, please try again"
-        });
-      });
+    // write a post method that will post the results of the form to the server at path /api/student
   };
+
   render() {
-    console.log(this.state.campus);
     return (
       <form>
         <div>
@@ -62,19 +40,8 @@ export default class Form extends Component {
 
         <div>
           <label htmlFor="#campus">Campus: </label>
-          <select
-            placeholder="campus"
-            id="campus"
-            onChange={e => this.setState({ campus: e.target.value })}
-            value={this.state.campus}
-          >
-            <option value="" defaultValue>
-              select one
-            </option>
-            <option value="1">Phoenix</option>
-            <option value="2">Provo</option>
-            <option value="3">Dallas</option>
-          </select>
+
+          {/* write the select tag and option tags */}
         </div>
 
         <button onClick={this.postStudent}>Submit</button>

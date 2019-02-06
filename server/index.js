@@ -18,13 +18,15 @@ massive(process.env.CONNECTION_STRING).then(db => {
 });
 
 // campus routes
-app.route("/api/campus_info").get(campusController.readCampusData);
+// write a get endpoint that will point to /api/campus_info
 
 // student routes
-app.get("/api/students", studentController.getStudents);
+// write a get endpoint that will point to /api/students
+
 app.post("/api/student", studentController.postStudent);
 app.put("/api/student/:student_id/:cohort", studentController.updateStudent);
-app.delete("/api/student/:student_id", studentController.deleteStudent);
+
+// write a delete endpoint that will point to /api/student/:student_id
 
 const PORT = process.env.PORT || 4000;
 

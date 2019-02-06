@@ -1,1 +1,1 @@
-SELECT * FROM campus_data;
+-- select the campus info
