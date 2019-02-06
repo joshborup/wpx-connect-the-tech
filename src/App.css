@@ -1,32 +1,158 @@
-.App {
-  text-align: center;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+h1,
+h2 {
+  color: rgb(245, 245, 245);
+  font-weight: 200;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-size: 36px;
+  letter-spacing: 2px;
+  text-shadow: 1.5px 1.5px 0px rgb(34, 155, 213);
+  border-bottom: solid 2px rgb(34, 155, 213);
+}
+
+h2 {
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+header {
+  height: 100px;
+  color: white;
+  background-image: linear-gradient(90deg, #111111, #646464);
+  border-bottom: solid 5px rgb(34, 155, 213);
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.329);
+}
+
+header > div {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+}
+
+header a {
+  color: rgb(172, 172, 172);
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.active {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header a:hover:not(.active) {
+  color: rgb(148, 213, 218);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+form select,
+form input,
+form button {
+  font-size: 16px;
+  height: 40px;
+  width: 130px;
+}
+
+form select {
+  background: white;
+}
+
+form input,
+form select {
+  margin-right: 10px;
+  box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.329);
+  border: solid rgb(245, 245, 245) 2px;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+form label {
+  font-weight: 700;
+  color: #555555;
+}
+
+form button {
+  align-self: flex-end;
+  cursor: pointer;
+  box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.329);
+  border: solid rgb(224, 224, 224) 2px;
+  border-radius: 5px;
+}
+
+.student,
+.campus {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  font-weight: 700;
+}
+
+.student-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 20px;
+}
+
+.message {
+  position: absolute;
+  bottom: -40px;
+  color: gray;
+}
+
+.student button {
+  cursor: pointer;
+  box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.329);
+  border: solid rgb(224, 224, 224) 2px;
+  border-radius: 5px;
+  width: 130px;
+  font-size: 16px;
+}
+
+/* Campus info styling */
+
+.campus-info-container > div {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ {
+  background: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
