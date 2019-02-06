@@ -37,5 +37,3 @@ const mappedCampusInfo = campusInfo.map((campus, index) => {
 
 <summary>
 Solution
-
-## student info
