@@ -3,8 +3,10 @@ import axios from "axios";
 import Form from "./Form";
 import Student from "./Student";
 import ColumnLabels from "./ColumLabels";
+import { setStudents, deleteStudent } from "../ducks/reducer";
+import { connect } from "react-redux";
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,23 +20,18 @@ export default class Home extends Component {
 
   getStudents = () => {
     axios.get("/api/students").then(response => {
-      this.setState({
-        studentList: response.data
-      });
+      this.props.setStudents(response.data);
     });
   };
 
   deleteStudent = id => {
     axios.delete(`/api/student/${id}`).then(response => {
-      console.log(response);
-      this.setState({
-        studentList: response.data
-      });
+      this.props.deleteStudent(response.data);
     });
   };
 
   render() {
-    const { studentList } = this.state;
+    const { studentList } = this.props;
     console.log(studentList);
     const mappedStudents = studentList.map((student, index) => {
       return (
@@ -50,7 +47,7 @@ export default class Home extends Component {
       <div className="student-info-container">
         <div>
           <div>
-            <Form getStudents={this.getStudents} />
+            <Form getStudents={this.props.getStudents} />
           </div>
           <div className="student-container">
             <ColumnLabels />
@@ -61,3 +58,19 @@ export default class Home extends Component {
     );
   }
 }
+
+const mapStateToProps = stateFromReducer => {
+  return {
+    studentList: stateFromReducer.studentList
+  };
+};
+
+const mapDispatchToProps = {
+  setStudents: setStudents,
+  deleteStudent: deleteStudent
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

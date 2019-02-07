@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Campus from "./Campus";
 import ColumnLabels from "./ColumLabels";
+import { setCampus } from "../ducks/reducer";
+import { connect } from "react-redux";
 import axios from "axios";
 
-export default class CampusInfo extends Component {
+class CampusInfo extends Component {
   constructor() {
     super();
     this.state = {
@@ -12,14 +14,12 @@ export default class CampusInfo extends Component {
   }
   componentDidMount() {
     axios.get("/api/campus_info").then(response => {
-      this.setState({
-        campusInfo: response.data
-      });
+      this.props.setCampus(response.data);
     });
   }
 
   render() {
-    const { campusInfo } = this.state;
+    const { campusInfo } = this.props;
     console.log(campusInfo);
     const mappedCampusInfo = campusInfo.map((campus, index) => {
       return <Campus index={index} key={campus.campus_id} {...campus} />;
@@ -41,3 +41,18 @@ export default class CampusInfo extends Component {
     );
   }
 }
+
+const mapStateToProps = stateFromReducer => {
+  return {
+    campusInfo: stateFromReducer.campusInfo
+  };
+};
+
+const mapDispatchToProps = {
+  setCampus: setCampus
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CampusInfo);

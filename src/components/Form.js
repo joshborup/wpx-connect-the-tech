@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-export default class Form extends Component {
+import { setStudents } from "../ducks/reducer";
+import { connect } from "react-redux";
+
+class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,17 +30,15 @@ export default class Form extends Component {
           campus: "",
           message: response.data.message
         });
-        this.props.getStudents();
+        this.props.setStudents(response.data);
       })
       .catch(err => {
-        console.log(err);
         this.setState({
           message: "there was an error posting, please try again"
         });
       });
   };
   render() {
-    console.log(this.state.campus);
     return (
       <form>
         <div>
@@ -83,3 +84,12 @@ export default class Form extends Component {
     );
   }
 }
+
+const mapDispatchToProps = {
+  setStudents: setStudents
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Form);
